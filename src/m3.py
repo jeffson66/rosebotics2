@@ -9,6 +9,7 @@ import time
 
 def main():
     """ Runs YOUR specific part of the project """
+    test_touching_censor()
 
 def test_touching_censor():
     robot = rb.Snatch3rRobot()
