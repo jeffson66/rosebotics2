@@ -179,13 +179,27 @@ class TouchSensor(low_level_rb.TouchSensor):
     def __init__(self, port=ev3.INPUT_1):
         super().__init__(port)
 
+
     def wait_until_pressed(self):
         """ Waits (doing nothing new) until the touch sensor is pressed. """
         # TODO.
+        while True:
+            if self.get_value() == 1:
+                sa = StopAction.BRAKE
+                
+
+
+
+
+
+
 
     def wait_until_released(self):
         """ Waits (doing nothing new) until the touch sensor is released. """
         # TODO
+        while True:
+            if self.get_value() == 0:
+                Snatch3rRobot.(StopAction.HOLD)
 
 
 class Camera(object):
