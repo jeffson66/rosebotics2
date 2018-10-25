@@ -16,6 +16,5 @@ def test_touching_censor():
     robot.touch_sensor.wait_until_pressed()
     print('pressed')
 
-def
 
 main()
