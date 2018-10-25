@@ -185,13 +185,7 @@ class TouchSensor(low_level_rb.TouchSensor):
         # TODO.
         while True:
             if self.get_value() == 1:
-                sa = StopAction.BRAKE
-                
-
-
-
-
-
+                break
 
 
     def wait_until_released(self):
@@ -199,7 +193,7 @@ class TouchSensor(low_level_rb.TouchSensor):
         # TODO
         while True:
             if self.get_value() == 0:
-                Snatch3rRobot.(StopAction.HOLD)
+                break
 
 
 class Camera(object):
