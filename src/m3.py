@@ -30,5 +30,5 @@ def test_color_censor():
     print('blue')
     robot.color_sensor.wait_until_color_is('green')
     print('green')
-
+    
 main()
