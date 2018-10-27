@@ -248,8 +248,8 @@ class ColorSensor(low_level_rb.ColorSensor):
         Each item in the sequence must be a Color (as defined above).
         """
         # Done.
-        for k in range(len(colors)):
-            while True:
+        while True:
+            for k in range(len(colors)):
                 if self.get_color() == colors[k]:
                     break
 
