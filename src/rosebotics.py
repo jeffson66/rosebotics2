@@ -105,28 +105,29 @@ class DriveSystem(object):
         Go straight at the given speed (-100 to 100, negative is backwards)
         for the given number of inches, stopping with the given StopAction.
         """
-        # TODO: Do a few experiments to determine the constant that converts
-        # TODO:   from wheel-degrees-spun to robot-inches-moved.
-        # TODO:   Assume that the conversion is linear with respect to speed.
+
+        self.move_for_seconds(inches/9.5)
 
     def spin_in_place_degrees(self,
                               degrees,
                               duty_cycle_percent=100,
                               stop_action=StopAction.BRAKE):
+
+        self.move_for_seconds(degrees/129.496, -100, 100)
         """
         Spin in place (i.e., both wheels move, in opposite directions)
         the given number of degrees, at the given speed (-100 to 100,
         where positive is clockwise and negative is counter-clockwise),
         stopping by using the given StopAction.
         """
-        # TODO: Do a few experiments to determine the constant that converts
-        # TODO:   from wheel-degrees-spun to robot-degrees-spun.
-        # TODO:   Assume that the conversion is linear with respect to speed.
+
 
     def turn_degrees(self,
+                     a,b,
                      degrees,
                      duty_cycle_percent=100,
                      stop_action=StopAction.BRAKE):
+
         """
         Turn (i.e., only one wheel moves)
         the given number of degrees, at the given speed (-100 to 100,
@@ -136,7 +137,7 @@ class DriveSystem(object):
         # Done: Do a few experiments to determine the constant that converts
         # TODO:   from wheel-degrees-spun to robot-degrees-turned.
         # TODO:   Assume that the conversion is linear with respect to speed.
-
+        self.move_for_seconds(degrees/63.5, a, b)
 
 # class ArmAndClaw(object):
 #     def __init__(self, touch_sensor, port=ev3.OUTPUT_A):
