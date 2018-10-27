@@ -25,6 +25,9 @@ def run_test_drive_system():
     """ Tests the  drive_system  of the Snatch3rRobot. """
     robot = rb.Snatch3rRobot()
 
+    robot.drive_system.go_straight_inches(19)
+    robot.drive_system.stop_moving()
+    '''''
     print()
     print("Testing the  drive_system  of the robot.")
     print("Move at (20, 50) - that is, veer left slowly")
@@ -96,7 +99,8 @@ def run_test_color_sensor():
               "{:4}".format(robot.color_sensor.get_color()),
               "{:4}".format(robot.color_sensor.get_reflected_intensity()))
         time.sleep(0.5)
-        count = count + 1
+        count = count + 1 
+'''''
 
 
 main()
