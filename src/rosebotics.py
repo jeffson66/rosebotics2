@@ -182,7 +182,7 @@ class TouchSensor(low_level_rb.TouchSensor):
 
     def wait_until_pressed(self):
         """ Waits (doing nothing new) until the touch sensor is pressed. """
-        # TODO.
+        # Done.
         while True:
             if self.get_value() == 1:
                 break
@@ -190,7 +190,7 @@ class TouchSensor(low_level_rb.TouchSensor):
 
     def wait_until_released(self):
         """ Waits (doing nothing new) until the touch sensor is released. """
-        # TODO
+        # Done
         while True:
             if self.get_value() == 0:
                 break
@@ -212,7 +212,9 @@ class ColorSensor(low_level_rb.ColorSensor):
         light intensity is less than the given value (threshold), which should
         be between 0 (no light reflected) and 100 (maximum light reflected).
         """
-        # TODO.
+        # TODO
+
+
 
     def wait_until_intensity_is_greater_than(self, reflected_light_intensity):
         """
