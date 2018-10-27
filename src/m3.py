@@ -22,16 +22,9 @@ def test_touch_censor():
 
 def test_color_censor():
     robot = rb.Snatch3rRobot()
-    print('hello again color sensor')
-    robot.color_sensor.wait_until_color_is('red')
-    print('red')
-    robot.color_sensor.wait_until_color_is('white')
-    print('white')
-    robot.color_sensor.wait_until_color_is('blue')
+    robot.drive_system.start_moving(100,100)
+    robot.color_sensor.wait_until_color_is(2)
     print('blue')
-    robot.color_sensor.wait_until_color_is('green')
-    print('green')
-    robot.color_sensor.wait_until_color_is_one_of(['blue', 'white', 'black', 'red'])
-    print('successful')
+
 
 main()
