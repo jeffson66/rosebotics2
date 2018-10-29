@@ -257,4 +257,4 @@ class ColorSensor(object):
 #         Returns True if another ultrasonic sensor could be heard nearby,
 #         else returns False.
 #         """
-#         return self.sensor.other_sensor_present
+#         return sedlf.sensor.other_sensor_present

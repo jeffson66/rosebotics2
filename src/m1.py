@@ -32,13 +32,3 @@ def test_color_censor():
     print('green')
 
 main()
-else:
-robot.drive_system.turn_degrees(0, 100, 100)
-for j in range(15):
-    robot.drive_system.start_moving(50, 50)
-    robot.color_sensor.wait_until_color_is(6)
-    robot.drive_system.stop_moving()
-
-    while robot.color_sensor.get_color() != 1:
-        robot.drive_system.turn_degrees(0, 100, theta)
-        theta = theta + 3
