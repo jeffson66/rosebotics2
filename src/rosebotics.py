@@ -240,6 +240,7 @@ class ColorSensor(low_level_rb.ColorSensor):
         # Done.
         while True:
             if self.get_color() == color:
+
                 break
 
     def wait_until_color_is_one_of(self, colors):

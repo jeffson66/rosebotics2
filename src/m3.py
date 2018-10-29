@@ -7,28 +7,38 @@ import rosebotics as rb
 import time
 
 
-def main():
-    """ Runs YOUR specific part of the project """
-    test_touching_censor()
-    test_color_censor()
-def test_touching_censor():
-    robot = rb.Snatch3rRobot()
-    print('hello')
-    robot.touch_sensor.wait_until_pressed()
-    print('pressed')
-    robot.touch_sensor.wait_until_released()
-    print('released')
+def reset1(n):
+    n = 10
+    return n
 
-def test_color_censor():
-    robot = rb.Snatch3rRobot()
-    print('hello again color sensor')
-    robot.color_sensor.wait_until_color_is('red')
-    print('red')
-    robot.color_sensor.wait_until_color_is('white')
-    print('white')
-    robot.color_sensor.wait_until_color_is('blue')
-    print('blue')
-    robot.color_sensor.wait_until_color_is('green')
-    print('green')
 
-main()
+
+
+
+# black line
+def black_line():
+    robot = rb.Snatch3rRobot()
+
+    angle = 10
+
+    for j in range(30):
+        angle = reset1(angle)
+
+        robot.drive_system.start_moving(100, 100)
+        robot.color_sensor.wait_until_color_is(6)
+
+        while True:
+
+            if robot.color_sensor.get_color() == 1:
+                break
+
+
+
+            robot.drive_system.turn_degrees(100, 0, angle)
+
+            angle = angle + 5
+
+
+
+
+black_line()
