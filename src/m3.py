@@ -9,11 +9,12 @@ import time
 
 def main():
     """ Runs YOUR specific part of the project """
-    test_touching_censor()
+    test_touch_censor()
     test_color_censor()
-def test_touching_censor():
+def test_touch_censor():
     robot = rb.Snatch3rRobot()
     print('hello')
+
     robot.touch_sensor.wait_until_pressed()
     print('pressed')
     robot.touch_sensor.wait_until_released()
@@ -21,14 +22,9 @@ def test_touching_censor():
 
 def test_color_censor():
     robot = rb.Snatch3rRobot()
-    print('hello again color sensor')
-    robot.color_sensor.wait_until_color_is('red')
-    print('red')
-    robot.color_sensor.wait_until_color_is('white')
-    print('white')
-    robot.color_sensor.wait_until_color_is('blue')
+    robot.drive_system.start_moving(100,100)
+    robot.color_sensor.wait_until_color_is(2)
     print('blue')
-    robot.color_sensor.wait_until_color_is('green')
-    print('green')
+
 
 main()
