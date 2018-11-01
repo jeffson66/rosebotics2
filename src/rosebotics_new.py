@@ -468,9 +468,9 @@ class InfraredAsProximitySensor(low_level_rb.InfraredSensor):
     A class for the infrared sensor when it is in the mode in which it
     measures distance to the nearest object that it sees.
     Primary authors:  The ev3dev authors, David Mutchler, Dave Fisher,
-       their colleagues, the entire team, and PUT_YOUR_NAME_HERE.
+       their colleagues, the entire team, and Mashengjun Li.
     """
-    # TODO: In the above line, put the name of the primary author of this class.
+    # Done: In the above line, put the name of the primary author of this class.
 
     def __init__(self, ir_sensor_port):
         super().__init__(ir_sensor_port)
@@ -497,7 +497,7 @@ class InfraredAsProximitySensor(low_level_rb.InfraredSensor):
         is within its field of vision.
         """
         inches_per_cm = 2.54
-        return 70 * inches_per_cm * self.get_distance_to_nearest_object() / 100
+        return 70 / inches_per_cm * self.get_distance_to_nearest_object() / 100
 
 
 class InfraredAsBeaconSensor(object):
@@ -558,9 +558,9 @@ class InfraredAsBeaconButtonSensor(object):
     A class for the infrared sensor when it is in the mode in which it
     measures which (if any) of the Beacon buttons are being pressed.
     Primary authors:  The ev3dev authors, David Mutchler, Dave Fisher,
-    their colleagues, the entire team, and PUT_YOUR_NAME_HERE.
+    their colleagues, the entire team, and Mashengjun Li.
     """
-    # TODO: In the above line, put the name of the primary author of this class.
+    # Done: In the above line, put the name of the primary author of this class.
 
     def __init__(self, ir_sensor, channel=1):
         self._underlying_ir_sensor = ir_sensor
@@ -615,9 +615,9 @@ class BrickButtonSensor(object):
     """
     A class for the buttons on the Brick.
     Primary authors:  The ev3dev authors, David Mutchler, Dave Fisher,
-    their colleagues, the entire team, and PUT_YOUR_NAME_HERE.
+    their colleagues, the entire team, and Mashengjun Li.
     """
-    # TODO: In the above line, put the name of the primary author of this class.
+    # Done: In the above line, put the name of the primary author of this class.
 
     def __init__(self):
         self._underlying_sensor = low_level_rb.BrickButtonSensor()

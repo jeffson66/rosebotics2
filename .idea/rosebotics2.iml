@@ -7,6 +7,10 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="rosebotics" />
+    <orderEntry type="module" module-name="IntroToEV3" />
+    <orderEntry type="module" module-name="05b-IntroToEV3Robot" />
+    <orderEntry type="module" module-name="25-Tkinter" />
   </component>
   <component name="TestRunnerService">
     <option name="PROJECT_TEST_RUNNER" value="Unittests" />
