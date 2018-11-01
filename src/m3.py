@@ -3,6 +3,7 @@
   Fall term, 2018-2019.
 """
 import rosebotics_new as rb
+import ev3dev.ev3 as ev3
 import time
 
 
@@ -28,14 +29,14 @@ def test_color_sensor():
 
 def test_proximity_sensor():
     robot = rb.Snatch3rRobot()
-    ev3 = rb.ev3
     distance = robot.proximity_sensor.get_distance_to_nearest_object()
-    inch = robot.proximity_sensor.get_distance_to_nearest_object_in_inches(distance)
-    while True:
-        if 0 < inch < 100:
-            ev3.Sound.beep()
+    inch = robot.proximity_sensor.get_distance_to_nearest_object_in_inches()
+    if 9 < inch < 15:
+        print('hello111')
+        ev3.Sound.beep().wait()
 
-        break
+
+
 
 
 
