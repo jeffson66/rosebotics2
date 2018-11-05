@@ -13,7 +13,7 @@ def main():
     time.sleep(1)  # Time to allow the MQTT setup.
 
     while True:
-        s = input("Enter a message: ")
+        s = input("Enter a message: LOLOLOLOLOLOL")
         mqtt_client.send_message("say_it", [s])
 
 
