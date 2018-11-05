@@ -434,7 +434,7 @@ class Blob(object):
         self.center = center
         self.width = width
         self.height = height
-        self.screen_limits = Point(320, 240)  # FIXME
+        self.screen_limits = Point(320, 200)  # FIXME
 
     def __repr__(self):
         return "center: ({:3d}, {:3d})  width, height: {:3d} {:3d}.".format(
@@ -688,11 +688,11 @@ class ArmAndClaw(object):
         (Hence, 0 means all the way DOWN and 14.2 * 360 means all the way UP).
         """
         # Done
-        self.touch_sensor.wait_until_pressed()
+        '''self.touch_sensor.wait_until_pressed()
         self.motor.start_spinning(-100)
         if self.motor.get_degrees_spun() == 14.2:
             self.motor.stop_spinning()
-            self.motor.reset_degrees_spun()
+            self.motor.reset_degrees_spun()'''
 
     def raise_arm_and_close_claw(self):
         """
