@@ -226,7 +226,7 @@ class DriveSystem(object):
         """
 
     def turn_degrees(self,
-                     a,b,
+                     a, b,
                      degrees,
                      duty_cycle_percent=100,
                      stop_action=StopAction.BRAKE):
@@ -673,6 +673,7 @@ class ArmAndClaw(object):
     def __init__(self, touch_sensor, port=ev3.OUTPUT_A):
         # The ArmAndClaw's  motor  is not really a Wheel, of course,
         # but it can do exactly what a Wheel can do.
+
         self.motor = low_level_rb.Wheel(port, is_arm=True)
 
         # The ArmAndClaw "has" the TouchSensor that is at the back of the Arm.
@@ -690,7 +691,12 @@ class ArmAndClaw(object):
         again at a reasonable speed. Then set the motor's position to 0.
         (Hence, 0 means all the way DOWN and 14.2 * 360 means all the way UP).
         """
-        # TODO: Do this as STEP 2 of implementing this class.
+        # Done
+        self.touch_sensor.wait_until_pressed()
+        self.motor.start_spinning(-100)
+        if self.motor.get_degrees_spun() == 14.2:
+            self.motor.stop_spinning()
+            self.motor.reset_degrees_spun()
 
     def raise_arm_and_close_claw(self):
         """
@@ -699,7 +705,14 @@ class ArmAndClaw(object):
         Positive speeds make the arm go UP; negative speeds make it go DOWN.
         Stop when the touch sensor is pressed.
         """
-        # TODO: Do this as STEP 1 of implementing this class.
+        # Done
+
+        print('hello')
+        self.motor.start_spinning(100)
+        print('goodbye')
+        time.sleep(3)
+        #self.touch_sensor.wait_until_pressed()
+        self.motor.stop_spinning()
 
     def move_arm_to_position(self, position):
         """
