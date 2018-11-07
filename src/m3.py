@@ -30,8 +30,8 @@ def test_color_sensor():
 def test_proximity_sensor():
     robot = rb.Snatch3rRobot()
     while True:
-        if 9 < robot.proximity_sensor.get_distance_to_nearest_object_in_inches() < 15:
+        dis = robot.proximity_sensor.get_distance_to_nearest_object_in_inches()
+        if 9 < dis < 16:
             print('hello111')
             ev3.Sound.beep().wait()
-        break
 main()
