@@ -3,7 +3,9 @@
   for a variety of applications of the robot.  Augment as appropriate.
 
   Team # PUT_YOUR_TEAM_NUMBER_HERE.
-  Team members:  PUT_YOUR_NAMES_HERE.
+  Team members:  Jiafan Lin
+                 Mashengjun Li
+                 Ao Liu.
   Fall term, 2018-2019.
 """
 
@@ -54,7 +56,7 @@ class Snatch3rRobot(object):
 class DriveSystem(object):
     """
     A class for driving (moving) the robot.
-    Primary authors:  entire team plus PUT_YOUR_NAME_HERE.
+    Primary authors:  entire team plus Ao Liu.
     """
 
     def __init__(self,
@@ -105,25 +107,45 @@ class DriveSystem(object):
         Go straight at the given speed (-100 to 100, negative is backwards)
         for the given number of inches, stopping with the given StopAction.
         """
-
-        self.move_for_seconds(inches/9.5)
+        # Done
+        self.start_moving(duty_cycle_percent, duty_cycle_percent)
+        while True:
+            if self.left_wheel.get_degrees_spun() >= 86 * inches:
+                self.left_wheel.reset_degrees_spun()
+                self.right_wheel.reset_degrees_spun()
+                break
+        self.stop_moving(stop_action)
 
     def spin_in_place_degrees(self,
                               degrees,
                               duty_cycle_percent=100,
                               stop_action=StopAction.BRAKE):
-
-        self.move_for_seconds(degrees/129.496, -100, 100)
         """
         Spin in place (i.e., both wheels move, in opposite directions)
         the given number of degrees, at the given speed (-100 to 100,
         where positive is clockwise and negative is counter-clockwise),
         stopping by using the given StopAction.
         """
+        # Done
+        if degrees > 0:
+            self.start_moving(duty_cycle_percent, -duty_cycle_percent)
+            while True:
+                if self.left_wheel.get_degrees_spun() >= 5 * degrees:
+                    self.left_wheel.reset_degrees_spun()
+                    self.right_wheel.reset_degrees_spun()
+                    break
+            self.stop_moving(stop_action)
 
+        else:
+            self.start_moving(-duty_cycle_percent, duty_cycle_percent)
+            while True:
+                if self.right_wheel.get_degrees_spun() >= abs(5 * degrees):
+                    self.left_wheel.reset_degrees_spun()
+                    self.right_wheel.reset_degrees_spun()
+                    break
+            self.stop_moving(stop_action)
 
     def turn_degrees(self,
-                     a,b,
                      degrees,
                      duty_cycle_percent=100,
                      stop_action=StopAction.BRAKE):
@@ -134,10 +156,24 @@ class DriveSystem(object):
         where positive is clockwise and negative is counter-clockwise),
         stopping by using the given StopAction.
         """
-        # Done: Do a few experiments to determine the constant that converts
-        # TODO:   from wheel-degrees-spun to robot-degrees-turned.
-        # TODO:   Assume that the conversion is linear with respect to speed.
-        self.move_for_seconds(degrees/63.5, a, b)
+        # Done
+        if degrees > 0:
+            self.start_moving(duty_cycle_percent, 0)
+            while True:
+                if self.left_wheel.get_degrees_spun() >= 10.5 * degrees:
+                    self.left_wheel.reset_degrees_spun()
+                    self.right_wheel.reset_degrees_spun()
+                    break
+            self.stop_moving(stop_action)
+
+        else:
+            self.start_moving(0, duty_cycle_percent)
+            while True:
+                if self.right_wheel.get_degrees_spun() >= abs(10.5 * degrees):
+                    self.left_wheel.reset_degrees_spun()
+                    self.right_wheel.reset_degrees_spun()
+                    break
+            self.stop_moving(stop_action)
 
 # class ArmAndClaw(object):
 #     def __init__(self, touch_sensor, port=ev3.OUTPUT_A):
@@ -180,14 +216,12 @@ class TouchSensor(low_level_rb.TouchSensor):
     def __init__(self, port=ev3.INPUT_1):
         super().__init__(port)
 
-
     def wait_until_pressed(self):
         """ Waits (doing nothing new) until the touch sensor is pressed. """
         # Done.
         while True:
             if self.get_value() == 1:
                 break
-
 
     def wait_until_released(self):
         """ Waits (doing nothing new) until the touch sensor is released. """
@@ -218,8 +252,6 @@ class ColorSensor(low_level_rb.ColorSensor):
             if self.get_value() < reflected_light_intensity:
                 break
 
-
-
     def wait_until_intensity_is_greater_than(self, reflected_light_intensity):
         """
         Waits (doing nothing new) until the sensor's measurement of reflected
@@ -228,7 +260,7 @@ class ColorSensor(low_level_rb.ColorSensor):
         """
         # Done.
         while True:
-            if self.get_value()> reflected_light_intensity:
+            if self.get_value() > reflected_light_intensity:
                 break
 
     def wait_until_color_is(self, color):
@@ -254,7 +286,6 @@ class ColorSensor(low_level_rb.ColorSensor):
             for k in range(len(colors)):
                 if self.get_color() == colors[k]:
                     break
-
 
 
 class InfraredSensorAsProximitySensor(object):

@@ -47,7 +47,7 @@ def run_test_sensors():
         #       robot.beacon_button_sensor.is_top_blue_button_pressed(),
         #       robot.beacon_button_sensor.is_bottom_blue_button_pressed())
 
-        character = input(
+        character = input (
             "Press the ENTER (return) key to get next sensor reading, or q to quit: ")
         if character == "q":
             break

@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../05b-IntroToEV3Robot/.idea/05b-IntroToEV3Robot.iml" filepath="$PROJECT_DIR$/../05b-IntroToEV3Robot/.idea/05b-IntroToEV3Robot.iml" />
       <module fileurl="file://$PROJECT_DIR$/../25-Tkinter/.idea/25-Tkinter.iml" filepath="$PROJECT_DIR$/../25-Tkinter/.idea/25-Tkinter.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../IntroToEV3/.idea/IntroToEV3.iml" filepath="$PROJECT_DIR$/../IntroToEV3/.idea/IntroToEV3.iml" />
       <module fileurl="file://$PROJECT_DIR$/../rosebotics/.idea/rosebotics.iml" filepath="$PROJECT_DIR$/../rosebotics/.idea/rosebotics.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/rosebotics2.iml" filepath="$PROJECT_DIR$/.idea/rosebotics2.iml" />
     </modules>

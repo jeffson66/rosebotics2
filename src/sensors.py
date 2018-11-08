@@ -12,6 +12,8 @@ def main():
     # test_touch_sensor()
     # test_color_sensor()
     test_proximity_sensor()
+
+
 def test_touch_sensor():
     robot = rb.Snatch3rRobot()
     print('hello')
@@ -21,11 +23,13 @@ def test_touch_sensor():
     robot.touch_sensor.wait_until_released()
     print('released')
 
+
 def test_color_sensor():
     robot = rb.Snatch3rRobot()
     robot.drive_system.start_moving(100,100)
     robot.color_sensor.wait_until_color_is(2)
     print('blue')
+
 
 def test_proximity_sensor():
     robot = rb.Snatch3rRobot()
