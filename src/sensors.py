@@ -11,9 +11,8 @@ def main():
     """ Runs YOUR specific part of the project """
     # test_touch_sensor()
     # test_color_sensor()
-    test_proximity_sensor()
-
-
+    #test_proximity_sensor()
+    camera()
 def test_touch_sensor():
     robot = rb.Snatch3rRobot()
     print('hello')
@@ -23,19 +22,24 @@ def test_touch_sensor():
     robot.touch_sensor.wait_until_released()
     print('released')
 
-
 def test_color_sensor():
     robot = rb.Snatch3rRobot()
     robot.drive_system.start_moving(100,100)
     robot.color_sensor.wait_until_color_is(2)
     print('blue')
 
-
 def test_proximity_sensor():
     robot = rb.Snatch3rRobot()
     while True:
-        dis = robot.proximity_sensor.get_distance_to_nearest_object_in_inches()
-        if 9 < dis < 16:
+        if 9 < robot.proximity_sensor.get_distance_to_nearest_object_in_inches() < 15:
             print('hello111')
             ev3.Sound.beep().wait()
+        break
+def camera():
+    robot = rb.Snatch3rRobot()
+    while True:
+        if robot.camera.get_biggest_blob().get_area() > 600:
+            ev3.Sound.beep().wait()
+        else:
+            pass
 main()
