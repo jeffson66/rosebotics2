@@ -26,9 +26,14 @@ import ev3dev.ev3 as ev3
 
 
 def main():
+   robot = rb.Snatch3rRobot()
+
     # --------------------------------------------------------------------------
     # TODO: 3. Construct a Snatch3rRobot.  Test.  When OK, delete this TODO.
     # --------------------------------------------------------------------------
+   rc = RemoteControlEtc(robot)
+   dude2 = com.MqttClient(rc)
+   dude2.connect_to_pc()
 
     # --------------------------------------------------------------------------
     # TODO: 4. Add code that constructs a   com.MqttClient   that will
@@ -43,12 +48,25 @@ def main():
     # TODO:    as needed for that, and also to handle the go_forward message.
     # TODO:    Test by PRINTING, then with robot.  When OK, delete this TODO.
     # --------------------------------------------------------------------------
+class RemoteControlEtc(object):
+    def __init__(self, robot):
+        """
 
+        Stores the robot.
+         :type robot: rb.Snatch3rRobot
+        """
+        self.robot = robot
+        pass
     # --------------------------------------------------------------------------
     # TODO: 6. With your instructor, discuss why the following WHILE loop,
     # TODO:    that appears to do nothing, is necessary.
     # TODO:    When you understand this, delete this TODO.
     # --------------------------------------------------------------------------
+    def go_straight(self):
+        self.robot.drive_system.start_moving(100,100)
+        time.sleep(5)
+        self.robot.drive_system.stop_moving()
+
     while True:
         # ----------------------------------------------------------------------
         # TODO: 7. Add code that makes the robot beep if the top-red button

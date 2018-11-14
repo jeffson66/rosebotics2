@@ -73,6 +73,7 @@ def setup_gui(root_window,mqtt_client):
     speed_entry_box = ttk.Entry(frame)
     go_forward_button = ttk.Button(frame, text="Go forward")
 
+
     speed_entry_box.grid()
     go_forward_button.grid()
 

@@ -52,7 +52,9 @@ import mqtt_remote_method_calls as com
 def main():
     """ Constructs and runs a GUI for this program. """
     root = tkinter.Tk()
-    setup_gui(root)
+    dude2 = com.MqttClient()
+    dude2.connect_to_ev3()
+    setup_gui(root,dude2)
 
     root.mainloop()
     # --------------------------------------------------------------------------
@@ -62,20 +64,30 @@ def main():
     # --------------------------------------------------------------------------
 
 
-def setup_gui(root_window):
+def setup_gui(root_window,mqtt_client):
     """ Constructs and sets up widgets on the given window. """
-    frame = ttk.Frame(root_window, padding=10)
+    frame = ttk.Frame(root_window, padding=30)
     frame.grid()
 
-    speed_entry_box = ttk.Entry(frame)
-    go_forward_button = ttk.Button(frame, text="Go forward")
 
-    speed_entry_box.grid()
-    go_forward_button.grid()
+    go_straight_button = ttk.Button(frame, text="Go straight")
+    go_back_button = ttk.Button(frame, text="Go back")
+    turn_left_button = ttk.Button(frame, text="Turn left")
+    turn_right_button = ttk.Button(frame, text="Turn right")
 
-    go_forward_button['command'] = \
-        lambda: handle_go_forward()
 
+
+    go_straight_button.grid(row = 0, column = 1)
+    go_back_button.grid(row = 2, column = 1)
+    turn_left_button.grid( row = 1, column =0)
+    turn_right_button.grid(row = 1, column =2,padx = 5, pady =5)
+
+
+    go_straight_button['command'] = lambda: go_straight(mqtt_client)
+
+def go_straight(mqtt_client):
+    print("Sending the go_straight message")
+    mqtt_client.send_message('go_straight')
 
 def handle_go_forward():
     """
